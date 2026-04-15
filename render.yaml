@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: video-tts-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+        required: true
+      - key: FRONTEND_URL
+        value: https://your-app.vercel.app
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+    healthCheckPath: /api/health
+    autoDeploy: true
