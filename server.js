@@ -24,12 +24,14 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:5173',
-    'https://frontend-poya.vercel.app',
-    'https://*.vercel.app'
+    'https://frontend-orcin-zeta-93.vercel.app',  // Your current Vercel URL
+    'https://frontend-poya.vercel.app',           // Your main Vercel URL
+    'https://*.vercel.app'                         // Allow all Vercel preview deployments
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.use(express.json());
 
 // 5. RATE LIMITING
 const limiter = rateLimit({
